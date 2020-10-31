@@ -7,6 +7,7 @@ let fs = require('fs');
 
 app.use(express.json());
 
+// funções para se comunicar com o front-end
 app.get('/api/dados', (req, res) => {
   fs.readFile(__dirname  + "/public/dados.json", 'utf8', function (err, data) {
     let dados = data;
