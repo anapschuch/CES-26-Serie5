@@ -7,7 +7,11 @@ class App extends React.Component {
     this.state = { data: { "itens": [] }, click: false }
   };
 
-  componentDidMount() {
+  componentDidMount(){
+    this.loadDados();
+  }
+
+  loadDados = () => {
     this.callApi()
       .then(res => this.setState({ data: res.express }))
       .catch(err => console.log(err));
@@ -60,6 +64,7 @@ class App extends React.Component {
       this.setState({click: false});
     } else {
       this.setState({click: true});
+      this.loadDados();
     }
   }
 
