@@ -12,7 +12,6 @@ app.get('/api/dados', (req, res) => {
   fs.readFile(__dirname  + "/public/dados.json", 'utf8', function (err, data) {
     let dados = data;
     dados = JSON.parse(dados);
-    console.log(dados);
     res.send({ express: dados })
   })
 });
@@ -20,7 +19,8 @@ app.get('/api/dados', (req, res) => {
 app.post('/api/enviar', (req,res) => {
   fs.writeFile(__dirname  + "/public/dados.json", JSON.stringify(req.body), function (err) {
     if (err) return console.log(err);
-    console.log('Arquivo salvo com sucesso');
+    console.log('Arquivo salvo com sucesso. Dados salvos:');
+    console.log(req.body);
   });
 })
 
